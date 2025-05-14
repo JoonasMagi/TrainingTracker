@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treeningpäevik</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Treeningpäevik</h1>
+            <img id="headerImage" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Treening">
+        </header>
+
+        <main>
+            <section class="form-section">
+                <h2>Lisa uus treening</h2>
+                <form id="workoutForm">
+                    <div class="form-group">
+                        <label for="workoutName">Treeningu nimetus:</label>
+                        <input type="text" id="workoutName" name="workoutName" placeholder="Nt. jooksmine, jõusaal, ujumine">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workoutDuration">Kestus (minutites):</label>
+                        <input type="number" id="workoutDuration" name="workoutDuration" min="1">
+                        <span class="error-message" id="durationError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workoutDate">Kuupäev:</label>
+                        <input type="date" id="workoutDate" name="workoutDate">
+                        <span class="error-message" id="dateError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workoutNotes">Märkused (valikuline):</label>
+                        <textarea id="workoutNotes" name="workoutNotes" rows="3" placeholder="Lisa märkused treeningu kohta"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn">Salvesta treening</button>
+                </form>
+            </section>
+
+            <div id="successMessage" class="message success-message hidden">
+                <h3>Treening edukalt salvestatud!</h3>
+                <p>Sinu treening on lisatud päevikusse.</p>
+            </div>
+
+            <section class="history-section">
+                <h2>Treeningute ajalugu</h2>
+                <button id="toggleHistory">Näita/Peida ajalugu</button>
+                <div id="workoutHistory" class="hidden">
+                    <p id="noWorkouts">Sul pole veel treeninguid salvestatud.</p>
+                    <ul id="workoutsList"></ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Treeningpäevik</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
