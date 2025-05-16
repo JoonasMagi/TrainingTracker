@@ -22,37 +22,38 @@ $(document).ready(function() {
 
     // Form validation
     function validateForm() {
-        let isValid = true;
-        
-        // Validate workout name
-        const workoutName = $('#workoutName').val().trim();
-        if (workoutName === '') {
-            $('#nameError').text('Palun sisesta treeningu nimetus');
-            isValid = false;
-        } else {
-            $('#nameError').text('');
-        }
-        
-        // Validate duration
-        const duration = $('#workoutDuration').val().trim();
-        if (duration === '' || duration <= 0) {
-            $('#durationError').text('Palun sisesta kehtiv kestus');
-            isValid = false;
-        } else {
-            $('#durationError').text('');
-        }
-        
-        // Validate date
-        const date = $('#workoutDate').val();
-        if (date === '') {
-            $('#dateError').text('Palun vali kuupäev');
-            isValid = false;
-        } else {
-            $('#dateError').text('');
-        }
-        
-        return isValid;
+    let isValid = true;
+
+    // Validate workout name
+    const workoutName = $('#workoutName').val().trim();
+    if (workoutName === '') {
+        $('#nameError').text('Palun sisesta treeningu nimetus');
+        isValid = false;
+    } else {
+        $('#nameError').text('');
     }
+
+    // Validate duration (must be number > 0)
+    const duration = $('#workoutDuration').val().trim();
+    if (duration === '' || isNaN(duration) || Number(duration) <= 0) {
+        $('#durationError').text('Palun sisesta kehtiv arv kestuseks');
+        isValid = false;
+    } else {
+        $('#durationError').text('');
+    }
+
+    // Validate date (must be valid date)
+    const date = $('#workoutDate').val();
+    if (date === '' || isNaN(Date.parse(date))) {
+        $('#dateError').text('Palun vali kehtiv kuupäev');
+        isValid = false;
+    } else {
+        $('#dateError').text('');
+    }
+
+    return isValid;
+}
+
 
     // Handle form submission
     $('#workoutForm').on('submit', function(e) {
